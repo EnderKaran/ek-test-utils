@@ -1,0 +1,35 @@
+# Bağımlılıklar
+node_modules/
+
+# Derleme Çıktıları (tsup buraya çıkartacak)
+dist/
+
+# Test Raporları
+coverage/
+
+# Güvenlik ve Çevre Değişkenleri
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.npmrc
+
+# Log Dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db
+
+# Editör Dosyaları
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
