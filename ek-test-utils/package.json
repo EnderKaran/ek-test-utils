@@ -1,14 +1,29 @@
 {
   "name": "ek-test-utils",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Zero-config React testing utilities.",
   "author": "Ender",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "testing",
+    "test-utils",
+    "nextjs",
+    "jest",
+    "vitest",
+    "testing-library",
+    "mock",
+    "matchmedia",
+    "intersection-observer",
+    "app-router",
+    "typescript"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",

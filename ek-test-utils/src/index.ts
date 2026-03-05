@@ -32,6 +32,35 @@ export const mockNextNavigation = () => ({
   useSearchParams: () => new URLSearchParams(),
 });
 
+export const setupMatchMediaMock = () => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: (query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {}, 
+      removeListener: () => {}, 
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }),
+  });
+};
+
+export const setupIntersectionObserverMock = () => {
+  class MockIntersectionObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  Object.defineProperty(window, 'IntersectionObserver', {
+    writable: true,
+    configurable: true,
+    value: MockIntersectionObserver,
+  });
+};
+
 export * from '@testing-library/react';
 
 export { customRender as render };
