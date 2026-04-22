@@ -13,8 +13,9 @@ Zero-config, frictionless React testing utilities. Focuses on developer experien
 ## Features
 
 - **Zero Config:** Pre-configured `render` and `renderHook` with automatic provider wrapping.
-- **Next.js Ready:** Built-in App Router mocks (`useRouter`, `usePathname`, etc.) to prevent Next.js specific testing errors.
-- **Browser Mocks:** Instantly mock `window.matchMedia` and `IntersectionObserver` for Jest and Vitest.
+- **Next.js Full Suite:** Built-in App Router mocks (`useRouter`) AND Server Component mocks (`cookies`, `headers`, `next/image`).
+- **Advanced Browser Mocks:** Instantly mock `window.matchMedia`, `IntersectionObserver`, `ResizeObserver`, and `navigator.clipboard`.
+- **Storage Management:** Built-in, leak-free `localStorage` and `sessionStorage` mock managers.
 - **All-in-One:** Re-exports everything from `@testing-library/react` and `@testing-library/user-event`.
 - **Type Safe:** Full TypeScript support.
 
@@ -29,11 +30,13 @@ yarn add -D ek-test-utils
 # or
 pnpm add -D ek-test-utils
 ```
+
 ---
 
 ## Usage
+
 ### 1. The Basics (Drop-in Replacement)
-Instead of importing from multiple testing libraries, import everything directly from ek-test-utils. Our custom render automatically wraps your components with necessary providers.
+Instead of importing from multiple testing libraries, import everything directly from `ek-test-utils`. Our custom render automatically wraps your components with necessary providers.
 
 ```tsx
 import { render, screen, userEvent } from 'ek-test-utils';
@@ -48,6 +51,7 @@ test('renders and clicks button', async () => {
   expect(screen.getByText(/clicked/i)).toBeInTheDocument();
 });
 ```
+
 ### 2. Testing Hooks
 Easily test your custom React hooks without needing to create dummy components.
 
@@ -61,34 +65,61 @@ test('increments counter', () => {
   // result.current.count
 });
 ```
-### 3. Next.js App Router Mock
-Testing Next.js 13+ components often fails due to missing router contexts. Use our built-in mock to bypass this.
+
+### 3. Next.js App Router & Server Mocks
+Testing Next.js 13+ components often fails due to missing router contexts or server-only APIs. Use our built-in mocks to bypass these errors effortlessly.
 
 ```tsx
-import { mockNextNavigation } from 'ek-test-utils';
+import { mockNextNavigation, mockNextHeaders, mockNextImage } from 'ek-test-utils';
 
-// If using Vitest:
+// Mock Navigation (App Router)
 vi.mock('next/navigation', () => mockNextNavigation());
 
-// If using Jest:
-jest.mock('next/navigation', () => mockNextNavigation());
+// Mock Headers & Cookies (Server Components)
+vi.mock('next/headers', () => mockNextHeaders());
+
+// Mock next/image to behave like a standard <img> tag
+vi.mock('next/image', () => mockNextImage());
 ```
+*(Note: Use `jest.mock()` instead of `vi.mock()` if you are using Jest).*
+
 ### 4. Browser API Mocks
-Prevent window.matchMedia and IntersectionObserver errors when testing responsive components or scroll animations. You can add these to your global setup file (e.g., setupTests.ts) or inside individual test files.
+Prevent browser-specific errors when testing responsive components, drag-and-drop interfaces, or copy-to-clipboard functionalities.
 
 ```tsx
-import { setupMatchMediaMock, setupIntersectionObserverMock } from 'ek-test-utils';
+import { 
+  setupMatchMediaMock, 
+  setupIntersectionObserverMock,
+  setupResizeObserverMock,
+  setupClipboardMock
+} from 'ek-test-utils';
 
 // Run before your tests
 beforeAll(() => {
   setupMatchMediaMock();
   setupIntersectionObserverMock();
+  setupResizeObserverMock();
+  setupClipboardMock();
 });
 ```
+
+### 5. Storage Mocks
+Testing `localStorage` or `sessionStorage` can cause data leaks between tests. Use our setup function to create a clean, isolated storage environment.
+
+```tsx
+import { setupStorageMocks } from 'ek-test-utils';
+
+beforeEach(() => {
+  // Cleans and isolates storage for each test
+  setupStorageMocks();
+});
+```
+
 ---
+
 ## 📄 License
 
-MIT ©
+MIT © Ender
 
 ---
 
@@ -98,6 +129,7 @@ Contributions, issues and feature requests are welcome!
 
 ---
 
-## Show your support
+## ⭐ Show your support
 
 Give a ⭐️ if this project helped you!
+```

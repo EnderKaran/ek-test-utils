@@ -6,10 +6,9 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "dist",
+    "rootDir": "./src",
     "strict": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },

@@ -7,5 +7,9 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-dom']
+  external: ['react', 'react-dom'],
+  treeshake: true,
+  minify: false,
+  target: 'es2020',
+  tsconfig: './tsconfig.json', 
 });
