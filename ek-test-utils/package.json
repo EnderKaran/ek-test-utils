@@ -30,9 +30,9 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
-  },
+  "build": "tsc --emitDeclarationOnly && tsup",
+  "dev": "tsup --watch"
+},
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"

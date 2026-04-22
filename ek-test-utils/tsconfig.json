@@ -5,6 +5,8 @@
     "jsx": "react-jsx",
     "declaration": true,
     "sourceMap": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
     "outDir": "dist",
     "rootDir": "./src",
     "strict": true,
