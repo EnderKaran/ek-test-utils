@@ -113,10 +113,9 @@ export const mockNextHeaders = () => {
 export const mockNextImage = () => {
   return {
     __esModule: true,
-    default: (props: any) => {
-      // next/image özel proplarını ayıklayıp standart HTML img elementi dönüyoruz
+    default: (props: Record<string, unknown>) => {
       const { priority, fetchPriority, placeholder, blurDataURL, ...rest } = props;
-      return React.createElement('img', rest);
+      return React.createElement('img', rest as React.ImgHTMLAttributes<HTMLImageElement>);
     },
   };
 };

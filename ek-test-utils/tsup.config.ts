@@ -7,9 +7,14 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-dom', '@testing-library/react', '@testing-library/user-event'],
+  external: [
+    'react',
+    'react-dom',
+    '@testing-library/react',
+    '@testing-library/user-event',
+    '@testing-library/jest-dom',
+  ],
   treeshake: true,
-  minify: false,
   target: 'es2020',
-  tsconfig: './tsconfig.json', 
+  tsconfig: './tsconfig.json',
 });
