@@ -1,8 +1,8 @@
 {
   "name": "ek-test-utils",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Zero-config React testing utilities.",
-  "author": "Ender",
+  "author": "Ender Karan",
   "license": "MIT",
   "keywords": [
     "react",
@@ -21,10 +21,14 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnderKaran/ek-test-utils.git"
+  },
   "files": [
-  "dist",
-  "README.md"
-],
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
