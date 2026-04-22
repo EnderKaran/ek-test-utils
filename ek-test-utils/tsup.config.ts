@@ -7,7 +7,7 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', '@testing-library/react', '@testing-library/user-event'],
   treeshake: true,
   minify: false,
   target: 'es2020',
